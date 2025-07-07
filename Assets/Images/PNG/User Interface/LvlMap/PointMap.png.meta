@@ -1,0 +1,1305 @@
+fileFormatVersion: 2
+guid: f3d60bb3264192a47ae0452759335e2e
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8587104393831966971
+    second: PointMap_0
+  - first:
+      213: -2286149516657626705
+    second: PointMap_1
+  - first:
+      213: 6213000105561307366
+    second: PointMap_2
+  - first:
+      213: -7933236938584365700
+    second: PointMap_3
+  - first:
+      213: 4110089006314496006
+    second: PointMap_4
+  - first:
+      213: 1250231873516193832
+    second: PointMap_5
+  - first:
+      213: 6157880800683892984
+    second: PointMap_6
+  - first:
+      213: -6916513191395212851
+    second: PointMap_7
+  - first:
+      213: 7480106414355874994
+    second: PointMap_8
+  - first:
+      213: 7288682626718227365
+    second: PointMap_9
+  - first:
+      213: 6154042101070797333
+    second: PointMap_10
+  - first:
+      213: -5375004599453529124
+    second: PointMap_11
+  - first:
+      213: 6789637532061723449
+    second: PointMap_12
+  - first:
+      213: 4901605228354990294
+    second: PointMap_13
+  - first:
+      213: -7985519329981601948
+    second: PointMap_14
+  - first:
+      213: -4708325208484809561
+    second: PointMap_15
+  - first:
+      213: -5252169256371080124
+    second: PointMap_16
+  - first:
+      213: 5558511088849862197
+    second: PointMap_17
+  - first:
+      213: -6131910147068338981
+    second: PointMap_18
+  - first:
+      213: -3899649113373039270
+    second: PointMap_19
+  - first:
+      213: -1441767262150739037
+    second: PointMap_20
+  - first:
+      213: -6369854419943575028
+    second: PointMap_21
+  - first:
+      213: -7200445330674662771
+    second: PointMap_22
+  - first:
+      213: 2930085865645227202
+    second: PointMap_23
+  - first:
+      213: 721322767386524958
+    second: PointMap_24
+  - first:
+      213: 2846772652915071906
+    second: PointMap_25
+  - first:
+      213: 1201249163061231338
+    second: PointMap_26
+  - first:
+      213: -352073689399295384
+    second: PointMap_27
+  - first:
+      213: 2331435732015388010
+    second: PointMap_28
+  - first:
+      213: 7298917034311680795
+    second: PointMap_29
+  - first:
+      213: -3703530781412456085
+    second: PointMap_30
+  - first:
+      213: -2645571057501453768
+    second: PointMap_31
+  - first:
+      213: -1636617565000016441
+    second: PointMap_32
+  - first:
+      213: -2845560788200572087
+    second: PointMap_33
+  - first:
+      213: 7837579372441827519
+    second: PointMap_34
+  - first:
+      213: -6055617355345031535
+    second: PointMap_35
+  - first:
+      213: -5387998696827569335
+    second: PointMap_36
+  - first:
+      213: -7590389261939669693
+    second: PointMap_37
+  - first:
+      213: 6942981632280579654
+    second: PointMap_38
+  - first:
+      213: 9103730446041905733
+    second: PointMap_39
+  - first:
+      213: -6108921191434660009
+    second: PointMap_40
+  - first:
+      213: -1247766824038625073
+    second: PointMap_41
+  - first:
+      213: -1919309386776435299
+    second: PointMap_42
+  - first:
+      213: 1690531464936927080
+    second: PointMap_43
+  - first:
+      213: 4403603329803593997
+    second: PointMap_44
+  - first:
+      213: 2290939175581310005
+    second: PointMap_45
+  - first:
+      213: -4289627279622916401
+    second: PointMap_46
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: PointMap_0
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 1318
+        width: 38
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bf8ec8323f58b2770800000000000000
+      internalID: 8587104393831966971
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PointMap_1
+      rect:
+        serializedVersion: 2
+        x: 165
+        y: 1338
+        width: 38
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fa1f03c8027f540e0800000000000000
+      internalID: -2286149516657626705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PointMap_2
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 1272
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6e832799da2093650800000000000000
+      internalID: 6213000105561307366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PointMap_3
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 1298
+        width: 38
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c75eba4590b77e190800000000000000
+      internalID: -7933236938584365700
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PointMap_4
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 1217
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6002d90dc28f90930800000000000000
+      internalID: 4110089006314496006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PointMap_5
+      rect:
+        serializedVersion: 2
+        x: 247
+        y: 1180
+        width: 38
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 828cdc3d347b95110800000000000000
+      internalID: 1250231873516193832
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PointMap_6
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 1140
+        width: 29
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f026fd56ff257550800000000000000
+      internalID: 6157880800683892984
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PointMap_7
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 1082
+        width: 38
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc1c59ec5eb9300a0800000000000000
+      internalID: -6916513191395212851
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PointMap_8
+      rect:
+        serializedVersion: 2
+        x: 267
+        y: 1091
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b48dcd072daec760800000000000000
+      internalID: 7480106414355874994
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PointMap_9
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 1062
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5abd91e5b3a962560800000000000000
+      internalID: 7288682626718227365
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PointMap_10
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 1051
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 51a9f177fac876550800000000000000
+      internalID: 6154042101070797333
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PointMap_11
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 1015
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cdb4b777bc52865b0800000000000000
+      internalID: -5375004599453529124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PointMap_12
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 954
+        width: 38
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 93be234cc53a93e50800000000000000
+      internalID: 6789637532061723449
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PointMap_13
+      rect:
+        serializedVersion: 2
+        x: 303
+        y: 905
+        width: 37
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6d0fb414cfff50440800000000000000
+      internalID: 4901605228354990294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PointMap_14
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 921
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4676e6d7a7cbd2190800000000000000
+      internalID: -7985519329981601948
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PointMap_15
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 854
+        width: 68
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a4fe3d2b2ba8aeb0800000000000000
+      internalID: -4708325208484809561
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PointMap_16
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 877
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 44436c573eb8c17b0800000000000000
+      internalID: -5252169256371080124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PointMap_17
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 852
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 53e37f2926cc32d40800000000000000
+      internalID: 5558511088849862197
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PointMap_18
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 823
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bdcd061a53417eaa0800000000000000
+      internalID: -6131910147068338981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PointMap_19
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 764
+        width: 66
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a55abb8eac9a1e9c0800000000000000
+      internalID: -3899649113373039270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PointMap_20
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 763
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3abb7ba5050ddfbe0800000000000000
+      internalID: -1441767262150739037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PointMap_21
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 735
+        width: 38
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c02bf4c672bb997a0800000000000000
+      internalID: -6369854419943575028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PointMap_22
+      rect:
+        serializedVersion: 2
+        x: 91
+        y: 734
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d8244801f11e21c90800000000000000
+      internalID: -7200445330674662771
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PointMap_23
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 711
+        width: 38
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2cc3d2f0291c9a820800000000000000
+      internalID: 2930085865645227202
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PointMap_24
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 690
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e1db9763c37a20a00800000000000000
+      internalID: 721322767386524958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PointMap_25
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 641
+        width: 38
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ab9c4d15a4c18720800000000000000
+      internalID: 2846772652915071906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PointMap_26
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 658
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aeefff2dfb1bba010800000000000000
+      internalID: 1201249163061231338
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PointMap_27
+      rect:
+        serializedVersion: 2
+        x: 292
+        y: 619
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 862089848de2d1bf0800000000000000
+      internalID: -352073689399295384
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PointMap_28
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 585
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a651e6f127cea5020800000000000000
+      internalID: 2331435732015388010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PointMap_29
+      rect:
+        serializedVersion: 2
+        x: 254
+        y: 568
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b1302331f56fa4560800000000000000
+      internalID: 7298917034311680795
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PointMap_30
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 468
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b698f2f506a6a9cc0800000000000000
+      internalID: -3703530781412456085
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PointMap_31
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 489
+        width: 38
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8324299d32b094bd0800000000000000
+      internalID: -2645571057501453768
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PointMap_32
+      rect:
+        serializedVersion: 2
+        x: 215
+        y: 476
+        width: 38
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7cd520deef09949e0800000000000000
+      internalID: -1636617565000016441
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PointMap_33
+      rect:
+        serializedVersion: 2
+        x: 297
+        y: 416
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 94b36802a898288d0800000000000000
+      internalID: -2845560788200572087
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PointMap_34
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 387
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb8f259f9eca4cc60800000000000000
+      internalID: 7837579372441827519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PointMap_35
+      rect:
+        serializedVersion: 2
+        x: 185
+        y: 366
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 19e08fe691026fba0800000000000000
+      internalID: -6055617355345031535
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PointMap_36
+      rect:
+        serializedVersion: 2
+        x: 254
+        y: 373
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 94b33596bbbf935b0800000000000000
+      internalID: -5387998696827569335
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PointMap_37
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 358
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 345852f8e2589a690800000000000000
+      internalID: -7590389261939669693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PointMap_38
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 314
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 64e4522520d6a5060800000000000000
+      internalID: 6942981632280579654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PointMap_39
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 254
+        width: 42
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 54a7c376b92f65e70800000000000000
+      internalID: 9103730446041905733
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PointMap_40
+      rect:
+        serializedVersion: 2
+        x: 217
+        y: 257
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7575ea7fa80c83ba0800000000000000
+      internalID: -6108921191434660009
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PointMap_41
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 210
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fc019aa3faa0faee0800000000000000
+      internalID: -1247766824038625073
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PointMap_42
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 174
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d952e1b184e3d55e0800000000000000
+      internalID: -1919309386776435299
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PointMap_43
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 144
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 86faf291969f57710800000000000000
+      internalID: 1690531464936927080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PointMap_44
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 82
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d09abaca5edbc1d30800000000000000
+      internalID: 4403603329803593997
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PointMap_45
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 57
+        width: 29
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 53cdc82da0d0bcf10800000000000000
+      internalID: 2290939175581310005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PointMap_46
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 24
+        width: 42
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fc6304377be2874c0800000000000000
+      internalID: -4289627279622916401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable: {}
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
