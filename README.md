@@ -22,4 +22,4 @@ As imagens, sprites e demais assets visuais utilizados neste projeto foram **for
 
 > ⚠️ **Atenção**: Os arquivos gráficos são usados **apenas para fins educacionais** e **não devem ser reutilizados comercialmente** sem verificar a licença original.
 
-Caso você seja o autor de algum dos assets presentes aqui e deseje solicitar a atribuição ou remoção, por favor entre em contato através da aba de issues ou pelo e-mail: [seu.email@exemplo.com]
+Caso você seja o autor de algum dos assets presentes aqui e deseje solicitar a atribuição ou remoção, por favor entre em contato através da aba de issues ou pelo e-mail: [jhonatansousameurer@gmail.com]
