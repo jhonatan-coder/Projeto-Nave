@@ -75,7 +75,7 @@ public class GameController : MonoBehaviour
     public LayerMask layerMask;
 
     private bool isDecolar;
-    [Header("Cor da FumaÁa")]
+    [Header("Cor da Fuma√ßa")]
     public Color corInicialFumaca;
     public Color corFinalFumaca;
 
@@ -93,14 +93,13 @@ public class GameController : MonoBehaviour
 
     //controle para habilitar inimigos aereos
     public GameObject ativarInimigo;
-    public GameObject ativarBossFinal;
-    public Transform pontoSpawnBoss;
-    [Header("Spawn dos Aviıes Humanos")]
-    public GameObject prefabEnemies;
+    [Header("Spawn dos Avi√µes Humanos")]
+    public GameObject[] prefabEnemies;
     public Transform[] localSpawnEnemies;
-    [Header("Spawn dos Aviıes Alienigenas")]
-    public GameObject prefabEnemiesAliens;
+    [Header("Spawn dos Avi√µes Alienigenas")]
+    public GameObject[] prefabEnemiesAliens;
     public Transform[] localSpawnEnemiesAliens;
+
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -147,8 +146,8 @@ public class GameController : MonoBehaviour
 
     public void ControleHelicoptero()
     {
-        //CONDI«√O CASO O JOGADOR SELECIONE UM HELICOPTERO
-        //SÛ funciona com helicoptero
+        //CONDI√á√ÉO CASO O JOGADOR SELECIONE UM HELICOPTERO
+        //S√≥ funciona com helicoptero
         if (_playerController != null && _playerController.gameObject != null &&
             _playerController.gameObject.layer == 6 && isDecolar == true && currentState == gameState.intro)
         {
@@ -156,7 +155,7 @@ public class GameController : MonoBehaviour
             {
                 //caso o estado seja decolando
                 case estadoHelicoptero.decolando:
-                    //vai mover atÈ o ponto de decolagem
+                    //vai mover at√© o ponto de decolagem
                     StartCoroutine("Subir");
                     _playerController.transform.position = Vector3.MoveTowards(_playerController.transform.position,
                     posicaoDecolagemHelicoptero.position, velocidadeAtual * Time.deltaTime);
@@ -170,13 +169,13 @@ public class GameController : MonoBehaviour
                     break;
                 //caso estado seja voando
                 case estadoHelicoptero.voando:
-                    //movera o helicoptero atÈ o segundo ponto
+                    //movera o helicoptero at√© o segundo ponto
                     _playerController.transform.position = Vector3.MoveTowards(_playerController.transform.position,
                         posicaoFinalMovimentoHelicoptero.position, velocidadeAtual * Time.deltaTime);
-                    //chegando no segundo ponto, ele entrara no estado pronto onde o jogo poder· comeÁar
+                    //chegando no segundo ponto, ele entrara no estado pronto onde o jogo poder√° come√ßar
                     if (Vector3.Distance(_playerController.transform.position, posicaoFinalMovimentoHelicoptero.position) <= 0.001f)
                     {
-                        print("ComeÁou a voar");
+                        print("Come√ßou a voar");
                         currentState = gameState.gameplay;
                     }
                     break;
@@ -186,8 +185,8 @@ public class GameController : MonoBehaviour
     }
     public void ControleAviao()
     {
-        //CONDI«√O CASO O JOGADOR SELECIONE UMA NAVE
-        //SÛ funciona com nave
+        //CONDI√á√ÉO CASO O JOGADOR SELECIONE UMA NAVE
+        //S√≥ funciona com nave
         if (_playerController != null && _playerController.gameObject != null &&
             _playerController.gameObject.layer == 7 && isDecolar == true && currentState == gameState.intro)
         {
@@ -196,13 +195,16 @@ public class GameController : MonoBehaviour
             {
                 _playerController.playerSombra.SetActive(true);
                 StartCoroutine("Subir");
+
+                print("Avi√£o - Subir muito");
+
                 currentState = gameState.gameplay;
 
             }
         }
     }
 
-    //limita a movimentaÁ„o do player em todos os angulos
+    //limita a movimentaÔøΩÔøΩo do player em todos os angulos
     void LimitMovimentPlayer()
     {
         float clampedX = Mathf.Clamp(_playerController.transform.position.x, limiteEsquerdo.position.x, limiteDireito.position.x);
@@ -226,7 +228,7 @@ public class GameController : MonoBehaviour
         return retorno;
     }
 
-    //funÁ„o ao tomar tiro inimigo
+    //fun√ß√£o ao tomar tiro inimigo
     public void HitPlayer()
     {
         if (!isAlivePlayer || isProcessingDeath) return;
@@ -271,7 +273,7 @@ public class GameController : MonoBehaviour
         yield return new WaitForSeconds(delaySpawnPlayer);
         if (playerPrefab == null)
         {
-            Debug.LogError("PlayerPrefab n„o esta atribuido");
+            Debug.LogError("PlayerPrefab n√£o esta atribuido");
             yield break; 
         }
         
@@ -286,7 +288,7 @@ public class GameController : MonoBehaviour
         }
         else
         {
-            Debug.LogError("N„o foi possÌvel encontrar o PlayerController no Prefab instanciado!");
+            Debug.LogError("N√£o foi poss√≠vel encontrar o PlayerController no Prefab instanciado!");
         }
         isProcessingDeath = false;
     }
@@ -338,7 +340,7 @@ public class GameController : MonoBehaviour
         ativarInimigo.SetActive(true);
     }
 
-    //spawna os inimigos avi„o comum
+    //spawna os inimigos aviÔøΩo comum
     IEnumerator SpawnHumansEnemies()
     {
         //tempo que sera spawnado inicialmente as naves humanas inimigas
@@ -351,7 +353,7 @@ public class GameController : MonoBehaviour
             yield return new WaitForSeconds(10f);
             int positionEnemy1 = Random.Range(0, localSpawnEnemies.Length);
             int positionEnemy2;
-            //Para n„o ter dois inimigos na mesma posiÁ„o, utilizo o do while para ter uma posiÁ„o diferente
+            //Para nÔøΩo ter dois inimigos na mesma posiÔøΩÔøΩo, utilizo o do while para ter uma posiÔøΩÔøΩo diferente
             do
             {
                 positionEnemy2 = Random.Range(0, localSpawnEnemies.Length);
@@ -361,7 +363,7 @@ public class GameController : MonoBehaviour
             yield return new WaitForSeconds(time);
             GameObject temp2 = Instantiate(prefabEnemies, localSpawnEnemies[positionEnemy2].position, localSpawnEnemies[positionEnemy2].rotation);
           
-            //a cada vez que È spawnado, o tempo total do prÛximo È reduzido
+            //a cada vez que ÔøΩ spawnado, o tempo total do prÔøΩximo ÔøΩ reduzido
             contagemInicial -= 15f;
             contagemFinal -= 20f;
             
@@ -396,7 +398,11 @@ public class GameController : MonoBehaviour
     }
 
 
+
     public void ScoreGame()
+
+    public void ScoreGame(int pontos)
+
     {
         
         pontosInimigos *= scorePlus;
