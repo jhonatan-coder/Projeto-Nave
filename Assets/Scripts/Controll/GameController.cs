@@ -93,13 +93,14 @@ public class GameController : MonoBehaviour
 
     //controle para habilitar inimigos aereos
     public GameObject ativarInimigo;
+    public GameObject ativarBossFinal;
+    public Transform pontoSpawnBoss;
     [Header("Spawn dos Aviões Humanos")]
-    public GameObject[] prefabEnemies;
+    public GameObject prefabEnemies;
     public Transform[] localSpawnEnemies;
     [Header("Spawn dos Aviões Alienigenas")]
-    public GameObject[] prefabEnemiesAliens;
+    public GameObject prefabEnemiesAliens;
     public Transform[] localSpawnEnemiesAliens;
-
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -195,16 +196,13 @@ public class GameController : MonoBehaviour
             {
                 _playerController.playerSombra.SetActive(true);
                 StartCoroutine("Subir");
-
-                print("Avião - Subir muito");
-
                 currentState = gameState.gameplay;
 
             }
         }
     }
 
-    //limita a movimenta��o do player em todos os angulos
+    //limita a movimentação do player em todos os angulos
     void LimitMovimentPlayer()
     {
         float clampedX = Mathf.Clamp(_playerController.transform.position.x, limiteEsquerdo.position.x, limiteDireito.position.x);
@@ -340,7 +338,7 @@ public class GameController : MonoBehaviour
         ativarInimigo.SetActive(true);
     }
 
-    //spawna os inimigos avi�o comum
+    //spawna os inimigos avião comum
     IEnumerator SpawnHumansEnemies()
     {
         //tempo que sera spawnado inicialmente as naves humanas inimigas
@@ -353,7 +351,7 @@ public class GameController : MonoBehaviour
             yield return new WaitForSeconds(10f);
             int positionEnemy1 = Random.Range(0, localSpawnEnemies.Length);
             int positionEnemy2;
-            //Para n�o ter dois inimigos na mesma posi��o, utilizo o do while para ter uma posi��o diferente
+            //Para não ter dois inimigos na mesma posição, utilizo o do while para ter uma posição diferente
             do
             {
                 positionEnemy2 = Random.Range(0, localSpawnEnemies.Length);
@@ -363,7 +361,7 @@ public class GameController : MonoBehaviour
             yield return new WaitForSeconds(time);
             GameObject temp2 = Instantiate(prefabEnemies, localSpawnEnemies[positionEnemy2].position, localSpawnEnemies[positionEnemy2].rotation);
           
-            //a cada vez que � spawnado, o tempo total do pr�ximo � reduzido
+            //a cada vez que é spawnado, o tempo total do próximo é reduzido
             contagemInicial -= 15f;
             contagemFinal -= 20f;
             
@@ -398,11 +396,7 @@ public class GameController : MonoBehaviour
     }
 
 
-
     public void ScoreGame()
-
-    public void ScoreGame(int pontos)
-
     {
         
         pontosInimigos *= scorePlus;
@@ -421,13 +415,14 @@ public class GameController : MonoBehaviour
         txtVidasExtras.text = extraLifes.ToString();
     }
 
-    public void ScorePlus()
+    /*IEnumerator SpawnLoop()
     {
-        scorePlus++;
-        txtMoedasExtras.text = scorePlus.ToString();
-    }
+        float timeRandom = Random.Range(1f, 10f);
+        yield return new WaitForSeconds(timeRandom);
+        StartCoroutine("SpawnEnemys");
+    }*/
 
-    public void ShotPlus()
+    public void ScoreGame(int pontos)
     {
         shotPlus++;
         txtshotsPlus.text = shotPlus.ToString();
