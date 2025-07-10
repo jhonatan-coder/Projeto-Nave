@@ -24,8 +24,8 @@ public class LootEnemy : MonoBehaviour
                 indexItem = 0; // caixa moeda
             }
 
-            GameObject temp = Instantiate(lootRandom[indexItem]);
-            temp.transform.position = transform.position;
+            GameObject temp = Instantiate(lootRandom[indexItem], transform.position, Quaternion.identity);
+            temp.transform.SetParent(GameObject.Find("Cenario").transform);
         }
 
     }

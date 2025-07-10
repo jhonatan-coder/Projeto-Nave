@@ -24,6 +24,8 @@ public class PlayerController : MonoBehaviour
 
     public float delayPiscar;
 
+    public int hit;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -64,18 +66,6 @@ public class PlayerController : MonoBehaviour
         temp.GetComponent<Rigidbody2D>().linearVelocityY = speedBullet;
 
     }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        switch (collision.gameObject.tag)
-        {
-            case "EnemyShot":
-                _gameController.HitPlayer();
-                Destroy(collision.gameObject);
-                break;
-        }
-    }
-
     IEnumerator Invencible()
     {
         Collider2D coll = GetComponent<Collider2D>();
@@ -98,6 +88,50 @@ public class PlayerController : MonoBehaviour
         fumacaSr.enabled = !fumacaSr.enabled;
         StartCoroutine("SpritePiscaPisca");
 
+    }
+
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        switch (collision.gameObject.tag)
+        {
+            case "EnemyShot":
+                _gameController.HitPlayer();
+                Destroy(collision.gameObject);
+                break;
+            case "Enemy":
+                _gameController.HitPlayer();
+                Destroy(collision.gameObject);
+                break;
+            case "EnemyBoss":
+                _gameController.HitPlayer();
+                Destroy(collision.gameObject);
+                break;
+        }
+        if (collision.CompareTag("Life"))
+        {
+            _gameController.LifePlus();
+            if (_gameController.extraLifes < 3)
+            {
+                Destroy(collision.gameObject);
+            }
+
+        }
+        else if (collision.CompareTag("Coin"))
+        {
+            _gameController.ScorePlus();
+            Destroy(collision.gameObject);
+
+        }
+        else if (collision.CompareTag("ShotPlus"))
+        {
+            _gameController.ShotPlus();
+
+
+            hit += _gameController.shotPlus;
+            Destroy(collision.gameObject);
+
+        }
     }
 
 }

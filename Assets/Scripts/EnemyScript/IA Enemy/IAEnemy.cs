@@ -13,6 +13,8 @@ public class IAEnemy : MonoBehaviour
 
     private GameController _gameController;
 
+    private LootEnemy _instanceDeathEnemy;
+
     //variavel para vleocidade da curva
     public float velocidadeMovimento;
   
@@ -29,7 +31,7 @@ public class IAEnemy : MonoBehaviour
     //eixo que sera girado
     private float rotacaoZ;
 
-    //controle da arma inimigo
+    //controle da armaBasica inimigo
     public Transform arma;
     public float velocidadeTiro;
     public int idBullet;
@@ -47,7 +49,7 @@ public class IAEnemy : MonoBehaviour
         _playerController = FindFirstObjectByType<PlayerController>();
         _gameController = FindFirstObjectByType<GameController>();
         rotacaoZ = transform.eulerAngles.z;
-
+        _instanceDeathEnemy = GetComponent<LootEnemy>();
         
     }
 
@@ -142,6 +144,11 @@ public class IAEnemy : MonoBehaviour
                 GameObject temp = Instantiate(_gameController.PrefabExplosion, transform.position, _gameController.PrefabExplosion.transform.localRotation);
                 Destroy(this.gameObject);
                 Destroy(collision.gameObject);
+                _instanceDeathEnemy.SpawnLoot();
+                break;
+            case "Player":
+                Destroy(this.gameObject);
+                _gameController.HitPlayer();
                 break;
         }
     }

@@ -10,10 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1904774744733766348}
   - component: {fileID: 4664962968813808803}
-  - component: {fileID: 4937763457393472605}
   - component: {fileID: 6086818351394917778}
+  - component: {fileID: 4937763457393472605}
+  - component: {fileID: 1023333821834500072}
   m_Layer: 0
-  m_Name: NaveHumana-Enemy
+  m_Name: NaveHumana-Enemy -Sides
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6199287980639363065}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -16.03, y: -2.59, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -35,7 +36,7 @@ Transform:
   - {fileID: 3058685971276001262}
   - {fileID: 8880391102542377253}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4664962968813808803
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -91,28 +92,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4937763457393472605
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6199287980639363065}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27f506083a2e5e644ae5b5ba37c0ee98, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  velocidadeMovimento: 3
-  pontoInicialCurva: 5
-  grausCurva: 0
-  incrementar: 0.3
-  arma: {fileID: 3058685971276001262}
-  velocidadeTiro: 5
-  idBullet: 0
-  tagBullet: 1
-  delayTiro: 0.3
-  direcaoMovimento: 1
 --- !u!61 &6086818351394917778
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -159,6 +138,44 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 2.67, y: 2.71}
   m_EdgeRadius: 0
+--- !u!114 &4937763457393472605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6199287980639363065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27f506083a2e5e644ae5b5ba37c0ee98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  velocidadeMovimento: 3
+  pontoInicialCurva: 0
+  grausCurva: 0
+  incrementar: 0.5
+  arma: {fileID: 3058685971276001262}
+  velocidadeTiro: 5
+  idBullet: 0
+  tagBullet: 1
+  delayTiro: 3
+  direcaoMovimento: 2
+--- !u!114 &1023333821834500072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6199287980639363065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff009e5ca57d7054192ebf98d786b3c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lootRandom:
+  - {fileID: 8379472870444442784, guid: 41e4d39ca8aa8cf469e660bf321467ec, type: 3}
+  - {fileID: 8117767730240985122, guid: 587b95009ef79fe47b8d1c1572eb98d8, type: 3}
+  - {fileID: 4218604520997914530, guid: dcfe259d3f8c72f4a9516a7acb7442fa, type: 3}
 --- !u!1 &8711608933440289846
 GameObject:
   m_ObjectHideFlags: 0

@@ -56,14 +56,20 @@ public class EnemyControll : MonoBehaviour
 
     public void ShotSlow()
     {
-        //Faz a arma girar em direção ao player, caso houver uma arma visível
-        AnguloDoTiro(5f);
+        //Faz a armaBasica girar em direção ao player, caso houver uma armaBasica visível
+        if (_gameController.isAlivePlayer)
+        {
+            AnguloDoTiro(5f);
+        }
     }
 
     public void ShotFast()
     {
-        //Faz a arma girar em direção ao player, caso houver uma arma visível
-        AnguloDoTiro(7f);
+        //Faz a armaBasica girar em direção ao player, caso houver uma armaBasica visível
+        if (_gameController.isAlivePlayer)
+        {
+            AnguloDoTiro(7f);
+        }
     }
 
     public void AnguloDoTiro(float shotVelocity)
@@ -86,6 +92,7 @@ public class EnemyControll : MonoBehaviour
                 Destroy(temp.gameObject, 0.4f);
                 _instanceDeathEnemy.SpawnLoot();
                 Destroy(this.gameObject);
+                
                 break;
         }
     }

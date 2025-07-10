@@ -3,57 +3,40 @@ using UnityEngine;
 
 public class EnemyPath : MonoBehaviour
 {
-    
     public Transform[] checkPaths;
-
-    //public Transform enemyNav;
-
     public float speedEnemy;
-    public float delayStop;//controla o tempo que vai de um ponto ao outro
+    public float delayStop;
 
-    private int idCheckPoints;
-    private bool moviment;
+    private int idCheckPoint;
+    private bool movimentando;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        StartCoroutine("InitMoviment");
+        StartCoroutine(InitMoviment());
     }
 
-    // Update is called once per frame
     void Update()
     {
-        /*if (moviment)
+        if (movimentando)
         {
-            enemyNav.position = Vector3.MoveTowards(enemyNav.position, checkPaths[idCheckPoints].position, speedEnemy * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(
+                transform.position,
+                checkPaths[idCheckPoint].position,
+                speedEnemy * Time.deltaTime
+            );
 
-            if (enemyNav.position == checkPaths[idCheckPoints].position)
+            if (Vector3.Distance(transform.position, checkPaths[idCheckPoint].position) < 0.01f)
             {
-                moviment = false;
-                StartCoroutine("InitMoviment");
+                movimentando = false;
+                StartCoroutine(InitMoviment());
             }
-        }*/
+        }
     }
-
-   /* public void EnemyRoute()
-    {
-
-        int rand = Random.Range(0, checkPaths.Length);
-        
-    }*/
 
     IEnumerator InitMoviment()
     {
-        idCheckPoints = Random.Range(0, checkPaths.Length);//fara o inimigo ir a um local de forma imprevisível
-
-        /*if (idCheckPoints >= checkPaths.Length)
-        {
-            idCheckPoints = 0;
-        }*/
-
         yield return new WaitForSeconds(delayStop);
-
-        moviment = true;
+        idCheckPoint = Random.Range(0, checkPaths.Length);
+        movimentando = true;
     }
-    
 }

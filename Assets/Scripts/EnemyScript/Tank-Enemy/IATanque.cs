@@ -7,6 +7,7 @@ public class IATanque : MonoBehaviour
 {
     private GameController _gameController;
     public GameObject prefabTank;
+    public LootEnemy lootEnemy;
 
     public Transform arma;
 
@@ -23,6 +24,7 @@ public class IATanque : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        lootEnemy = GetComponent<LootEnemy>();
         _gameController = FindFirstObjectByType<GameController>();
     }
 
@@ -62,7 +64,9 @@ public class IATanque : MonoBehaviour
                 temp.transform.parent = _gameController.cenario;
                 Destroy(collision.gameObject);
                 Destroy(this.gameObject);
-                _gameController.ScoreGame(points);
+                _gameController.pontosInimigos = 15;
+                _gameController.ScoreGame();
+                lootEnemy.SpawnLoot();
                 break;
         }
     }

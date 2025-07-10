@@ -7,6 +7,11 @@ TagManager:
   - PlayerShot
   - EnemyShot
   - Inimigo
+  - Enemy
+  - EnemyBoss
+  - Life
+  - Coin
+  - ShotPlus
   layers:
   - Default
   - TransparentFX
@@ -16,13 +21,13 @@ TagManager:
   - UI
   - Helicoptero
   - Aviao
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Life
+  - Coin
+  - Bomb
+  - Tank
+  - Aviao
+  - Alien
+  - Boss
   - 
   - 
   - 

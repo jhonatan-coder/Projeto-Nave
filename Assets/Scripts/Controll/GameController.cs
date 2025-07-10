@@ -32,6 +32,10 @@ public class GameController : MonoBehaviour
     
     public GameObject playerPrefab;
     public int extraLifes;
+    public int scorePlus;
+    public int scorePlusMomentaneo;
+    public int lifePlus;
+    public int shotPlus;
 
     public Transform spawnPlayer;
     public float delaySpawnPlayer;
@@ -53,6 +57,7 @@ public class GameController : MonoBehaviour
     public GameObject PrefabExplosion;
 
     public bool isAlivePlayer;
+    private bool isProcessingDeath;
 
     [Header("Config. Intro Fase")]
 
@@ -77,38 +82,45 @@ public class GameController : MonoBehaviour
     [Header("Config. HUD")]
     public TMP_Text txtVidasExtras;
     public TMP_Text txtMoedasExtras;
-    public TMP_Text txtBombasExtras;
+    public TMP_Text txtshotsPlus;
 
     public TMP_Text txtPontuacao;
 
     //Variaveis de score
     public int score;
+    //variavel que armazena o valor de cada inimigo para o score
+    public int pontosInimigos;
 
     //controle para habilitar inimigos aereos
     public GameObject ativarInimigo;
+    public GameObject ativarBossFinal;
+    public Transform pontoSpawnBoss;
     [Header("Spawn dos Aviões Humanos")]
-    public GameObject[] prefabEnemys;
-    public Transform[] localSpawnEnemys;
+    public GameObject prefabEnemies;
+    public Transform[] localSpawnEnemies;
     [Header("Spawn dos Aviões Alienigenas")]
-    public GameObject[] prefabEnemysAliens;
-    public Transform[] localSpawnEnemysAliens;
-
+    public GameObject prefabEnemiesAliens;
+    public Transform[] localSpawnEnemiesAliens;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        scorePlus = 1;
+        shotPlus = 0;
+        lifePlus = 0;
+
         txtPontuacao.text = "0";
         txtVidasExtras.text = extraLifes.ToString();
-        txtMoedasExtras.text = "0";
-        txtBombasExtras.text = "0";
+        txtMoedasExtras.text = "1";
+        txtshotsPlus.text = "0";
 
         currentState = gameState.intro;
         StartCoroutine("IntroFase");
         StartCoroutine("AtivarNavesInimigas");
 
-        StartCoroutine("SpawnEnemys");
-        StartCoroutine("SpawnAliens");
+        StartCoroutine("SpawnHumansEnemies");
+        StartCoroutine("SpawnEnemiesAliens");
     }
 
     // Update is called once per frame
@@ -121,8 +133,7 @@ public class GameController : MonoBehaviour
 
         ControleHelicoptero();
         ControleAviao();
-        
-        
+        AtivarBoss();
     }
 
     private void LateUpdate()
@@ -154,8 +165,7 @@ public class GameController : MonoBehaviour
 
                     if (Vector3.Distance(_playerController.transform.position, posicaoDecolagemHelicoptero.position) < 0.01f)
                     {
-                        print("Helicoptero - Subir pouco");
-                        estadoAtualHelicopeto = estadoHelicoptero.voando;
+                        estadoAtualHelicopeto = estadoHelicoptero.voando;                       
                     }
                     break;
                 //caso estado seja voando
@@ -186,13 +196,13 @@ public class GameController : MonoBehaviour
             {
                 _playerController.playerSombra.SetActive(true);
                 StartCoroutine("Subir");
-                print("Avião - Subir muito");
                 currentState = gameState.gameplay;
 
             }
         }
     }
 
+    //limita a movimentação do player em todos os angulos
     void LimitMovimentPlayer()
     {
         float clampedX = Mathf.Clamp(_playerController.transform.position.x, limiteEsquerdo.position.x, limiteDireito.position.x);
@@ -219,12 +229,15 @@ public class GameController : MonoBehaviour
     //função ao tomar tiro inimigo
     public void HitPlayer()
     {
+        if (!isAlivePlayer || isProcessingDeath) return;
+        isProcessingDeath = true;
         isAlivePlayer = false;
         if (_playerController != null)
         {
             GameObject temp = Instantiate(PrefabExplosion,_playerController.transform.position, PrefabExplosion.transform.localRotation);
             Destroy(_playerController.gameObject);
             _playerController = null;
+            print("Player morre");
         }
         extraLifes--;
         if (extraLifes >= 0)
@@ -241,10 +254,17 @@ public class GameController : MonoBehaviour
         
     }
 
-    /*public void PositionSpawnEnemys()
+    public void AtivarBoss()
     {
-
-    }*/
+        if (isAlivePlayer)
+        {
+            if (Vector3.Distance(_playerController.transform.position, pontoSpawnBoss.position) <= 15f)
+            {
+                ativarBossFinal.SetActive(true);
+            }
+        }
+        
+    }
 
     IEnumerator InstantiatePlayer()
     {
@@ -268,6 +288,7 @@ public class GameController : MonoBehaviour
         {
             Debug.LogError("Não foi possível encontrar o PlayerController no Prefab instanciado!");
         }
+        isProcessingDeath = false;
     }
     
     IEnumerator IntroFase()
@@ -286,7 +307,7 @@ public class GameController : MonoBehaviour
             yield return new WaitForSeconds(0.2f);
         }
     }
-
+    //Controle da subida e do scalonamento do GameObject
     IEnumerator Subir()
     {
 
@@ -295,66 +316,116 @@ public class GameController : MonoBehaviour
 
         Vector3 escalaInicial = Vector3.one * tamanhoInicialNave;
         Vector3 escalaFinal = Vector3.one * tamanhoOriginalNave;
-
-        while(tempo < duracao)
-        {
-            _playerController.transform.localScale = Vector3.Lerp(escalaInicial, escalaFinal, tempo / duracao);
-            _playerController.fumacaSr.color = Color.Lerp(_playerController.fumacaSr.color, corFinalFumaca, 0.05f);
-
-            if (Mathf.Approximately(_playerController.transform.localScale.x, tamanhoOriginalNave))
+            while (tempo < duracao)
             {
-                break;
-            }
-            tempo += Time.deltaTime;
+                _playerController.transform.localScale = Vector3.Lerp(escalaInicial, escalaFinal, tempo / duracao);
+                _playerController.fumacaSr.color = Color.Lerp(_playerController.fumacaSr.color, corFinalFumaca, 0.05f);
 
-            yield return null;
-        }
-        _playerController.transform.localScale = escalaFinal;
-        print("Altura Maxima");
+                if (Mathf.Approximately(_playerController.transform.localScale.x, tamanhoOriginalNave))
+                {
+                    break;
+                }
+                tempo += Time.deltaTime;
+
+                yield return null;
+            }
+            _playerController.transform.localScale = escalaFinal;
     }
 
     IEnumerator AtivarNavesInimigas()
     {
-        yield return new WaitForSeconds(15);
+        yield return new WaitForSeconds(40);
         ativarInimigo.SetActive(true);
     }
-    IEnumerator SpawnEnemys()
+
+    //spawna os inimigos avião comum
+    IEnumerator SpawnHumansEnemies()
     {
+        //tempo que sera spawnado inicialmente as naves humanas inimigas
+        float contagemInicial = 40f;
+        float contagemFinal = 50f;
         while (true)
         {
+            //escolhe randomicamente o tempo entre 40 e 50 segundos
+            float time = Random.Range(contagemInicial, contagemFinal);
             yield return new WaitForSeconds(10f);
-            int enemysAleatorios = Random.Range(0, prefabEnemys.Length);
-            int positionEnemy = Random.Range(0, localSpawnEnemys.Length);
-            GameObject temp1 = Instantiate(prefabEnemys[enemysAleatorios], localSpawnEnemys[positionEnemy].position, localSpawnEnemys[positionEnemy].localRotation);
-            GameObject temp2 = Instantiate(prefabEnemys[enemysAleatorios], localSpawnEnemys[positionEnemy].position, localSpawnEnemys[positionEnemy].localRotation);
-            print("Inimigo spawnado");
+            int positionEnemy1 = Random.Range(0, localSpawnEnemies.Length);
+            int positionEnemy2;
+            //Para não ter dois inimigos na mesma posição, utilizo o do while para ter uma posição diferente
+            do
+            {
+                positionEnemy2 = Random.Range(0, localSpawnEnemies.Length);
+            } while (positionEnemy2 == positionEnemy1);
+            //instanciar inimigos em tempos diferentes
+            GameObject temp1 = Instantiate(prefabEnemies, localSpawnEnemies[positionEnemy1].position, localSpawnEnemies[positionEnemy1].rotation);
+            yield return new WaitForSeconds(time);
+            GameObject temp2 = Instantiate(prefabEnemies, localSpawnEnemies[positionEnemy2].position, localSpawnEnemies[positionEnemy2].rotation);
+          
+            //a cada vez que é spawnado, o tempo total do próximo é reduzido
+            contagemInicial -= 15f;
+            contagemFinal -= 20f;
+            
+            //chegando em um limite de 10 a 20 segundos
+            if (contagemInicial < 10 && contagemFinal < 20)
+            {
+                contagemInicial = 10f;
+                contagemFinal = 20f;
+            }
         }
 
     }
 
-    IEnumerator SpawnAliens()
+    //spawna as naves do tipo Alien
+    IEnumerator SpawnEnemiesAliens()
     {
         while (true)
         {
-            yield return new WaitForSeconds(10f);
-            int enemysAleatorios = Random.Range(0, prefabEnemysAliens.Length);
-            int positionEnemy = Random.Range(0, localSpawnEnemys.Length);
-            GameObject temp1 = Instantiate(prefabEnemysAliens[enemysAleatorios], localSpawnEnemysAliens[positionEnemy].position, localSpawnEnemysAliens[positionEnemy].localRotation);
-            GameObject temp2 = Instantiate(prefabEnemysAliens[enemysAleatorios], localSpawnEnemysAliens[positionEnemy].position, localSpawnEnemysAliens[positionEnemy].localRotation);
-            print("Inimigo spawnado");
+            float time = Random.Range(90, 120);
+            yield return new WaitForSeconds(time);
+            int positionEnemiesAliens1 = Random.Range(0, localSpawnEnemiesAliens.Length);
+            int positionEnemiesAliens2;
+            do
+            {
+                positionEnemiesAliens2 = Random.Range(0, localSpawnEnemiesAliens.Length);
+            } while (positionEnemiesAliens2 == positionEnemiesAliens1);
+
+            GameObject temp1 = Instantiate(prefabEnemiesAliens, localSpawnEnemiesAliens[positionEnemiesAliens1].position, localSpawnEnemiesAliens[positionEnemiesAliens1].rotation);
+            GameObject temp2 = Instantiate(prefabEnemiesAliens, localSpawnEnemiesAliens[positionEnemiesAliens2].position, localSpawnEnemiesAliens[positionEnemiesAliens2].rotation);
+
         }
     }
 
-    /*IEnumerator SpawnLoop()
-    {
-        float timeRandom = Random.Range(1f, 10f);
-        yield return new WaitForSeconds(timeRandom);
-        StartCoroutine("SpawnEnemys");
-    }*/
 
-    public void ScoreGame(int pontos)
+    public void ScoreGame()
     {
-        score += pontos;
+        
+        pontosInimigos *= scorePlus;
+        score += pontosInimigos;
         txtPontuacao.text = score.ToString();
     }
+
+    public void LifePlus()
+    {
+        lifePlus++;
+        extraLifes += lifePlus;
+        if (extraLifes >= 3)
+        {
+            extraLifes = 3;
+        }
+        txtVidasExtras.text = extraLifes.ToString();
+    }
+
+    public void ScorePlus()
+    {
+        scorePlus++;
+        txtMoedasExtras.text = scorePlus.ToString();
+    }
+
+    public void ShotPlus()
+    {
+        shotPlus++;
+        txtshotsPlus.text = shotPlus.ToString();
+
+    }
+
 }
