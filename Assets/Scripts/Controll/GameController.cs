@@ -415,12 +415,17 @@ public class GameController : MonoBehaviour
         txtVidasExtras.text = extraLifes.ToString();
     }
 
-    /*IEnumerator SpawnLoop()
+    public void ScorePlus()
     {
-        float timeRandom = Random.Range(1f, 10f);
-        yield return new WaitForSeconds(timeRandom);
-        StartCoroutine("SpawnEnemys");
-    }*/
+        scorePlus++;
+        txtMoedasExtras.text = scorePlus.ToString();
+    }
+
+    public void ShotPlus()
+    {
+        shotPlus++;
+        txtshotsPlus.text = shotPlus.ToString();
+    }
 
     public void ScoreGame(int pontos)
     {
