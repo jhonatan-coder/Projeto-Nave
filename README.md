@@ -1,4 +1,4 @@
-# Rota de Fogo
+# Sky troops
 
 Este é um projeto desenvolvido com fins educacionais, baseado no curso AprendaUnity Curso de desenvolvimento de jogos, ministrado por Patrick.
 
