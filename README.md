@@ -14,6 +14,8 @@ Ao colidir com os inimigos você perderá 1 vida assim como se você for atingif
 - [UnityEngine,
 - System.Collections,
 - TMP_Pro,
+- UnityEngine.UI,
+- UnityEngine.SceneManagement
 - ]
 
 ## 🖼️ Créditos dos Assets
