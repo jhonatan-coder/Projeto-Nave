@@ -277,9 +277,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerController: {fileID: 0}
   _gameController: {fileID: 0}
+  tagbullet: 0
   corNormal: {r: 1, g: 1, b: 1, a: 1}
   corHit: {r: 1, g: 0, b: 0, a: 0.49803922}
-  velocidade: 5
+  velocidade: 7
   armaBasica: {fileID: 689516235643208058}
   armasAvancadas:
   - {fileID: 5532380712560203009}

@@ -91,16 +91,18 @@ public class GameController : MonoBehaviour
     //variavel que armazena o valor de cada inimigo para o score
     public int pontosInimigos;
 
-    //controle para habilitar inimigos aereos
-    public GameObject ativarInimigo;
-    public GameObject ativarBossFinal;
-    public Transform pontoSpawnBoss;
     [Header("Spawn dos Aviões Humanos")]
     public GameObject prefabEnemies;
     public Transform[] localSpawnEnemies;
     [Header("Spawn dos Aviões Alienigenas")]
     public GameObject prefabEnemiesAliens;
     public Transform[] localSpawnEnemiesAliens;
+    //controle para habilitar inimigos aereos
+    public GameObject ativarInimigo;
+
+    [Header("Spawn do Boss")]
+    public GameObject ativarBossFinal;
+    public Transform pontoSpawnBoss;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -176,7 +178,6 @@ public class GameController : MonoBehaviour
                     //chegando no segundo ponto, ele entrara no estado pronto onde o jogo poderá começar
                     if (Vector3.Distance(_playerController.transform.position, posicaoFinalMovimentoHelicoptero.position) <= 0.001f)
                     {
-                        print("Começou a voar");
                         currentState = gameState.gameplay;
                     }
                     break;
@@ -237,7 +238,6 @@ public class GameController : MonoBehaviour
             GameObject temp = Instantiate(PrefabExplosion,_playerController.transform.position, PrefabExplosion.transform.localRotation);
             Destroy(_playerController.gameObject);
             _playerController = null;
-            print("Player morre");
         }
         extraLifes--;
         if (extraLifes >= 0)
@@ -246,7 +246,7 @@ public class GameController : MonoBehaviour
         }
         else
         {
-            print("GAME OVER");
+            //carrega cena de gameover
         }
 
         if (extraLifes < 0) {extraLifes = 0; }
@@ -279,10 +279,10 @@ public class GameController : MonoBehaviour
 
         _playerController = temp.GetComponent<PlayerController>();
         yield return new WaitForEndOfFrame();
+        isAlivePlayer = true;
         if (_playerController != null)
         {
             _playerController.StartCoroutine("Invencible");
-            isAlivePlayer = true;
         }
         else
         {
@@ -300,7 +300,6 @@ public class GameController : MonoBehaviour
         yield return new WaitForEndOfFrame();
         isDecolar = true;
 
-        print("Autorizado");
         //a cada 0.2 segundos a velocidade ira aumentar
         for (velocidadeAtual = 0; velocidadeAtual < velocidadeDecolagemMax; velocidadeAtual += 0.1f)
         {
