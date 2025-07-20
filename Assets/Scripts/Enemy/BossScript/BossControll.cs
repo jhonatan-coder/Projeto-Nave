@@ -4,8 +4,11 @@ using UnityEngine.UI;
 
 public class BossControll : MonoBehaviour
 {
-    public PlayerController _playerController;
-    public GameController _gameController;
+    private PlayerController _playerController;
+    private GameController _gameController;
+    private SceneController _sceneControll;
+    private MusicManager _musicManager;
+
     private LootEnemy _lootEnemy;
     private LootBoss _lootBoss;
 
@@ -24,7 +27,7 @@ public class BossControll : MonoBehaviour
     public Transform armaBasica;
     public Transform[] armasAvancadas;
 
-    private bool podeAtacar = true;
+    private bool podeAtacar = true; 
     //tipo de munição
     public int idBullet;
 
@@ -35,17 +38,24 @@ public class BossControll : MonoBehaviour
     public Slider sliderLife;
     private int vidaMaxima = 200;
     private int vidaAtual;
+    private bool isBossAlive;
 
-   
+    public bool IsBossAlive { get => isBossAlive; set => isBossAlive = value; }
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         _gameController = FindFirstObjectByType<GameController>();
         _playerController = FindFirstObjectByType<PlayerController>();
+        _sceneControll = FindFirstObjectByType<SceneController>();
         _enemypath = FindFirstObjectByType<EnemyPath>();
+        _musicManager = FindAnyObjectByType<MusicManager>();
+
         sprite = GetComponent<SpriteRenderer>();
         _lootEnemy = GetComponent<LootEnemy>();
         _lootBoss = GetComponent<LootBoss>();
+        IsBossAlive = true;
         StartCoroutine("AtaqueDoBoss");
         vidaAtual = vidaMaxima;
         sliderLife.maxValue = vidaMaxima;
@@ -155,7 +165,7 @@ public class BossControll : MonoBehaviour
     public void DanoNaVida()
     {
         //Troca de cor momentaneamente
-        StartCoroutine("AlteraCor");
+        StartCoroutine(AlteraCor());
         //diminuir a barra de vida
         vidaAtual -= _playerController.hit;
         vidaAtual = Mathf.Clamp(vidaAtual, 0, vidaMaxima);
@@ -190,14 +200,26 @@ public class BossControll : MonoBehaviour
                     GameObject temp = Instantiate(_gameController.PrefabExplosion, transform.position, transform.localRotation);
                     Destroy(this.gameObject);
                     Destroy(temp.gameObject, 0.4f);
+                    _musicManager.FxExplosaoDeath();
                     //Dropar itens e muitos pontos
                     _lootBoss.SpawnLootBoss();
-                    
+                    IsBossAlive = false;
+                    if (IsBossAlive == false)
+                    {
+                        StartCoroutine(FimDeFase());
+                    }
 
                 }
                 
                 break;
         }
+    }
+
+    IEnumerator FimDeFase()
+    {
+        yield return new WaitForSeconds(5);
+        _sceneControll.StartGame("Final_de_Fase");
+
     }
 
 }

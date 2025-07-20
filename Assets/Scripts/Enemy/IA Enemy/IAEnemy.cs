@@ -9,8 +9,7 @@ public enum DirecaoInicial
 }
 public class IAEnemy : MonoBehaviour
 {
-    private PlayerController _playerController;
-
+    private MusicManager _musicManager;
     private GameController _gameController;
 
     private LootEnemy _instanceDeathEnemy;
@@ -46,8 +45,8 @@ public class IAEnemy : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        _playerController = FindFirstObjectByType<PlayerController>();
         _gameController = FindFirstObjectByType<GameController>();
+        _musicManager = FindFirstObjectByType<MusicManager>();
         rotacaoZ = transform.eulerAngles.z;
         _instanceDeathEnemy = GetComponent<LootEnemy>();
         
@@ -145,6 +144,7 @@ public class IAEnemy : MonoBehaviour
                 Destroy(this.gameObject);
                 Destroy(collision.gameObject);
                 _instanceDeathEnemy.SpawnLoot();
+                _musicManager.FxExplosaoDeath();
                 break;
             case "Player":
                 Destroy(this.gameObject);

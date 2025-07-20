@@ -6,6 +6,7 @@ using UnityEngine;
 public class IATanque : MonoBehaviour
 {
     private GameController _gameController;
+    private MusicManager _controllMusic;
     public GameObject prefabTank;
     public LootEnemy lootEnemy;
 
@@ -26,14 +27,8 @@ public class IATanque : MonoBehaviour
     {
         lootEnemy = GetComponent<LootEnemy>();
         _gameController = FindFirstObjectByType<GameController>();
+        _controllMusic = FindFirstObjectByType<MusicManager>();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
 
 
     IEnumerator ControleTiro()
@@ -67,6 +62,7 @@ public class IATanque : MonoBehaviour
                 _gameController.pontosInimigos = 15;
                 _gameController.ScoreGame();
                 lootEnemy.SpawnLoot();
+                _controllMusic.FxExplosaoDeath();
                 break;
         }
     }

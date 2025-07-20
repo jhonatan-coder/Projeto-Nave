@@ -29,12 +29,6 @@ public class EnemyControll : MonoBehaviour
         StartCoroutine("TiroRapidoInimigo");
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
 
     //CONTROLE DO TIRO DO INIMIGO
     IEnumerator TiroLentoInimigo()    {

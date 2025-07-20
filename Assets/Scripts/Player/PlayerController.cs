@@ -6,6 +6,8 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D playerRB;
 
     private GameController _gameController;
+    private MusicManager _controllMusic;
+    private MenuOptions _menuOptions;
 
     public GameObject playerSombra;
 
@@ -25,6 +27,8 @@ public class PlayerController : MonoBehaviour
     public float delayPiscar;
 
     public int hit;
+    private bool isPlayerAlive;
+    public bool IsPlayerAlive { get => isPlayerAlive; set => isPlayerAlive = value; }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -32,17 +36,24 @@ public class PlayerController : MonoBehaviour
         playerRB = GetComponent<Rigidbody2D>();
         _gameController = FindFirstObjectByType<GameController>();
         playerSr = GetComponent<SpriteRenderer>();
+        _controllMusic = FindFirstObjectByType<MusicManager>();
+        _menuOptions = FindFirstObjectByType<MenuOptions>();
         _gameController._playerController = this;
         _gameController.isAlivePlayer = true;
         playerSombra.SetActive(false);
+        IsPlayerAlive = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (_gameController.currentState == gameState.gameplay)
         {
-            Shot();
+            if (Input.GetButtonDown("Fire1") && !_menuOptions.MenuAberto)
+            {
+                Shot();
+                _controllMusic.FxTiroHelicoptero();
+            }
         }
     }
 

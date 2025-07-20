@@ -3,22 +3,17 @@ using UnityEngine;
 public class FadeTransition : MonoBehaviour
 {
     public Animator animator;
-    private StartFly _startFly;
+    private SceneController _startFly;
 
     private void Start()
     {
-        _startFly = FindFirstObjectByType<StartFly>();
+        _startFly = FindFirstObjectByType<SceneController>();
+        
     }
-    // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Jump"))
-        {
-            ControllAnimator();
-            
-        }
+        ControllAnimator();
     }
-
     public void ControllAnimator()
     {
         animator.SetTrigger("FadeOut");
@@ -27,6 +22,5 @@ public class FadeTransition : MonoBehaviour
     public void FadeComplet()
     {
         _startFly.StartGame("Menu-Inicial");
-
     }
 }

@@ -24,6 +24,8 @@ public enum estadoHelicoptero
 public class GameController : MonoBehaviour
 {
     public PlayerController _playerController;
+    private SceneController _controleDeCena;
+    private MusicManager _controleDeMusica;
 
     public gameState currentState;
 
@@ -108,6 +110,9 @@ public class GameController : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        _controleDeCena = FindFirstObjectByType<SceneController>();
+        _controleDeMusica = FindFirstObjectByType<MusicManager>();
+        _playerController = FindAnyObjectByType<PlayerController>();
         scorePlus = 1;
         shotPlus = 0;
         lifePlus = 0;
@@ -118,11 +123,11 @@ public class GameController : MonoBehaviour
         txtshotsPlus.text = "0";
 
         currentState = gameState.intro;
-        StartCoroutine("IntroFase");
-        StartCoroutine("AtivarNavesInimigas");
+        StartCoroutine(IntroFase());
+        StartCoroutine(AtivarNavesInimigas());
 
-        StartCoroutine("SpawnHumansEnemies");
-        StartCoroutine("SpawnEnemiesAliens");
+        StartCoroutine(SpawnHumansEnemies());
+        StartCoroutine(SpawnEnemiesAliens());
     }
 
     // Update is called once per frame
@@ -158,8 +163,10 @@ public class GameController : MonoBehaviour
             {
                 //caso o estado seja decolando
                 case estadoHelicoptero.decolando:
+                    
                     //vai mover até o ponto de decolagem
                     StartCoroutine("Subir");
+                    //AQUI VAI O SOM DO HELICOPTERO DECOLANDO
                     _playerController.transform.position = Vector3.MoveTowards(_playerController.transform.position,
                     posicaoDecolagemHelicoptero.position, velocidadeAtual * Time.deltaTime);
                     //caso tenha chego no ponto de decolagem, mudara o estado para voando
@@ -169,6 +176,7 @@ public class GameController : MonoBehaviour
                     {
                         estadoAtualHelicopeto = estadoHelicoptero.voando;                       
                     }
+                    _controleDeMusica.HelicopteroDecolando();
                     break;
                 //caso estado seja voando
                 case estadoHelicoptero.voando:
@@ -180,11 +188,14 @@ public class GameController : MonoBehaviour
                     {
                         currentState = gameState.gameplay;
                     }
+                    //AQUI VAI O SOM DO HELICOPTERO VOANDO RAPIDO
+                    _controleDeMusica.HelicopteroVoando();
                     break;
             }
 
         }
     }
+
     public void ControleAviao()
     {
         //CONDIÇÃO CASO O JOGADOR SELECIONE UMA NAVE
@@ -211,6 +222,7 @@ public class GameController : MonoBehaviour
 
         _playerController.transform.position = new Vector3(clampedX, clampedY, 0);
     }
+    //define a tag que os tiros irão receber para causar dano
     public string ApplyTag(tagBullets tag)
     {
         string retorno = null;
@@ -227,7 +239,7 @@ public class GameController : MonoBehaviour
         return retorno;
     }
 
-    //função ao tomar tiro inimigo
+    //Controla o hit e a morte do jogador
     public void HitPlayer()
     {
         if (!isAlivePlayer || isProcessingDeath) return;
@@ -239,14 +251,17 @@ public class GameController : MonoBehaviour
             Destroy(_playerController.gameObject);
             _playerController = null;
         }
+        _controleDeMusica.FxExplosaoDeath();
         extraLifes--;
         if (extraLifes >= 0)
         {
-            StartCoroutine("InstantiatePlayer");
+            StartCoroutine(InstantiatePlayer());
         }
         else
         {
             //carrega cena de gameover
+
+            _controleDeCena.StartGame("GameOver");
         }
 
         if (extraLifes < 0) {extraLifes = 0; }
@@ -254,6 +269,7 @@ public class GameController : MonoBehaviour
         
     }
 
+    //vai ativar o boss assim que chegar na distância mínima
     public void AtivarBoss()
     {
         if (isAlivePlayer)
@@ -266,6 +282,7 @@ public class GameController : MonoBehaviour
         
     }
 
+    //Vai instanciar o player após ser morto(enquanto tiver vidas)
     IEnumerator InstantiatePlayer()
     {
         yield return new WaitForSeconds(delaySpawnPlayer);
@@ -291,8 +308,14 @@ public class GameController : MonoBehaviour
         isProcessingDeath = false;
     }
     
+    //controla os efetios da cinematica no inicio
     IEnumerator IntroFase()
     {
+        if (_playerController == null)
+        {
+            Debug.LogError("PlayerController está NULL durante IntroFase. Verifique se o jogador foi instanciado antes.");
+            yield break;
+        }
         _playerController.fumacaSr.color = corInicialFumaca;
         _playerController.transform.localScale = new Vector3(tamanhoInicialNave, tamanhoInicialNave, tamanhoInicialNave);
         _playerController.transform.position = posicaoInicialNave.position;
@@ -306,7 +329,7 @@ public class GameController : MonoBehaviour
             yield return new WaitForSeconds(0.2f);
         }
     }
-    //Controle da subida e do scalonamento do GameObject
+    //Controle da subida e doslocamento do GameObject
     IEnumerator Subir()
     {
 
@@ -331,13 +354,14 @@ public class GameController : MonoBehaviour
             _playerController.transform.localScale = escalaFinal;
     }
 
+    //ativa as naves inimigas após um tempo
     IEnumerator AtivarNavesInimigas()
     {
         yield return new WaitForSeconds(40);
         ativarInimigo.SetActive(true);
     }
 
-    //spawna os inimigos avião comum
+    //spawna os inimigos avião comum após determinado tempo
     IEnumerator SpawnHumansEnemies()
     {
         //tempo que sera spawnado inicialmente as naves humanas inimigas
