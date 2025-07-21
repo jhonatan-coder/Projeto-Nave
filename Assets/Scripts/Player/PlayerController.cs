@@ -117,31 +117,28 @@ public class PlayerController : MonoBehaviour
             case "EnemyBoss":
                 _gameController.HitPlayer();
                 break;
-        }
-        if (collision.CompareTag("Life"))
-        {
-            _gameController.LifePlus();
-            if (_gameController.extraLifes < 3)
-            {
+            case "Life":
+                _gameController.LifePlus();
+                _controllMusic.FXSomColetaveis(_controllMusic.vida);
+                if (_gameController.extraLifes < 3)
+                {
+                    Destroy(collision.gameObject);
+                }
+                break;
+            case "Coin":
+                _gameController.ScorePlus();
+                _controllMusic.FXSomColetaveis(_controllMusic.moeda);
                 Destroy(collision.gameObject);
-            }
+                break;
+            case "ShotPlus":
+                _gameController.ShotPlus();
+                _controllMusic.FXSomColetaveis(_controllMusic.bomba);
+                hit += _gameController.shotPlus;
 
+                Destroy(collision.gameObject);
+                break;
         }
-        else if (collision.CompareTag("Coin"))
-        {
-            _gameController.ScorePlus();
-            Destroy(collision.gameObject);
-
-        }
-        else if (collision.CompareTag("ShotPlus"))
-        {
-            _gameController.ShotPlus();
-
-
-            hit += _gameController.shotPlus;
-            Destroy(collision.gameObject);
-
-        }
+        
     }
 
 }

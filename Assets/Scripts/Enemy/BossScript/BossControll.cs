@@ -198,16 +198,17 @@ public class BossControll : MonoBehaviour
                     vidaAtual = 0;
                     sliderLife.fillRect.gameObject.SetActive(false);
                     GameObject temp = Instantiate(_gameController.PrefabExplosion, transform.position, transform.localRotation);
-                    Destroy(this.gameObject);
-                    Destroy(temp.gameObject, 0.4f);
                     _musicManager.FxExplosaoDeath();
                     //Dropar itens e muitos pontos
                     _lootBoss.SpawnLootBoss();
                     IsBossAlive = false;
                     if (IsBossAlive == false)
                     {
-                        StartCoroutine(FimDeFase());
+                        print("Boss morreu, vai iniciar coroutina");
+                        _sceneControll.CenaFinal();
                     }
+                    Destroy(this.gameObject);
+                    Destroy(temp.gameObject, 0.4f);
 
                 }
                 
@@ -215,11 +216,6 @@ public class BossControll : MonoBehaviour
         }
     }
 
-    IEnumerator FimDeFase()
-    {
-        yield return new WaitForSeconds(5);
-        _sceneControll.StartGame("Final_de_Fase");
-
-    }
+ 
 
 }

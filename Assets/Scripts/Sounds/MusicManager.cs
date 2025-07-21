@@ -7,6 +7,7 @@ public class MusicManager : MonoBehaviour
 {
     [SerializeField]private AudioSource  audioSourceMusic;
     [SerializeField]private AudioSource  audioSourceFX;
+    [SerializeField]private AudioSource  audioSourceFXColetaveis;
     [SerializeField]private AudioSource  audioSourceFXTiro;
     [SerializeField]private AudioSource  audioSourceFXExplosion;
 
@@ -17,11 +18,16 @@ public class MusicManager : MonoBehaviour
     public AudioClip helicopteroVoando;
     public AudioClip FxTiro;
     public AudioClip FxExplosao;
+    //musicas para os itens
+    public AudioClip moeda;
+    public AudioClip vida;
+    public AudioClip bomba;
 
     private Coroutine musicaAtual;
 
     public Slider sliderVolumeMusica;
     public Slider sliderVolumeFX;
+    public Slider sliderVolumeFXColetaveis;
     public Slider sliderVolumeFxTiro;
     public Slider sliderVolumeFxExplosion;
 
@@ -32,6 +38,7 @@ public class MusicManager : MonoBehaviour
     public AudioSource AudioSourceFX { get => audioSourceFX; set => audioSourceFX = value; }
     public AudioSource AudioSourceFXTiro { get => audioSourceFXTiro; set => audioSourceFXTiro = value; }
     public AudioSource AudioSourceFXExplosion { get => audioSourceFXExplosion; set => audioSourceFXExplosion = value; }
+    public AudioSource AudioSourceFXColetaveis { get => audioSourceFXColetaveis; set => audioSourceFXColetaveis = value; }
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -48,12 +55,16 @@ public class MusicManager : MonoBehaviour
 
         sliderVolumeMusica.value = PlayerPrefs.GetFloat("volMusic", AudioSourceMusic.volume);
         sliderVolumeFX.value = PlayerPrefs.GetFloat("volFX", AudioSourceFX.volume);
+        sliderVolumeFXColetaveis.value = PlayerPrefs.GetFloat("volFX", audioSourceFX.volume);
         sliderVolumeFxTiro.value = PlayerPrefs.GetFloat("volTiroFX", AudioSourceFXTiro.volume);
         sliderVolumeFxExplosion.value = PlayerPrefs.GetFloat("volFXExplosion", AudioSourceFXExplosion.volume);
 
         //Adicionar listener para salvar sempre que o valor mudar
         sliderVolumeMusica.onValueChanged.AddListener(SalvarVolMusic);
+
         sliderVolumeFX.onValueChanged.AddListener(SalvarVolFX);
+        sliderVolumeFXColetaveis.onValueChanged.AddListener(SalvarVolFX);
+
         sliderVolumeFxTiro.onValueChanged.AddListener(SalvarVolTiroFx);
         sliderVolumeFxExplosion.onValueChanged.AddListener(SalvarVolFxExplosion);
         
@@ -88,6 +99,7 @@ public class MusicManager : MonoBehaviour
         PlayerPrefs.Save();
     }
 
+
     //Ira tocar a _musicManager dependendo de qual seja a cena
     public void TrocarMusicaCena(string nomeCena)
     {
@@ -120,7 +132,7 @@ public class MusicManager : MonoBehaviour
         {
             if (musicas.Length == 0) yield break; // se não houver música alguma ira sair.
 
-            AudioSourceMusic.clip = musicas[index];
+            AudioSourceMusic.clip = musicas[Random.Range(index, musicas.Length)];
             AudioSourceMusic.Play();
 
             //vai esperar até o fim da música
@@ -190,11 +202,10 @@ public class MusicManager : MonoBehaviour
         helioCoroutine = StartCoroutine(HelicopteroFXLoop(helicopteroVoando));
     }
     //Caso acrescentar novos fx, utilizar essa função para ativa-los
-    /*private void FXSomGeral(AudioClip clip)
+    public void FXSomColetaveis(AudioClip clip)
     {
-        AudioSourceFX.clip = clip;
-        AudioSourceFX.Play();
-    }*/
+        AudioSourceFX.PlayOneShot(clip);
+    }
 
     private void FXTiroHelicopteroPrincipal(AudioClip clip)
     {
@@ -202,11 +213,6 @@ public class MusicManager : MonoBehaviour
         AudioSourceFXTiro.Play();
     }
 
-    private void FXSomExplosion(AudioClip clip)
-    {
-        AudioSourceFXExplosion.clip = clip;
-        AudioSourceFXExplosion.Play();
-    }
 
     public void FxTiroHelicoptero()
     {
@@ -218,11 +224,11 @@ public class MusicManager : MonoBehaviour
         FXSomExplosion(FxExplosao);
 
     }
-
-    /*public void FxGeral()
+    private void FXSomExplosion(AudioClip clip)
     {
-        FXSomGeral();
-    }*/
+        AudioSourceFXExplosion.clip = clip;
+        AudioSourceFXExplosion.Play();
+    }
 
     public void ControleDeVolumeMusic()
     {
@@ -240,6 +246,7 @@ public class MusicManager : MonoBehaviour
     public void ControleDeVolumeFx()
     {
         AudioSourceFX.volume = sliderVolumeFX.value;
+        AudioSourceFXColetaveis.volume = sliderVolumeFX.value;
     }
 
     public void PararTodosOsFx()

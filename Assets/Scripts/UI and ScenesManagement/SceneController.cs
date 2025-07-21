@@ -155,4 +155,14 @@ public class SceneController : MonoBehaviour
         menu.MenuAberto = false;        
     }
     
+    public void CenaFinal()
+    {
+        StartCoroutine(ComecaFaseFinal());
+    }
+
+    IEnumerator ComecaFaseFinal()
+    {
+        yield return new WaitForSeconds(5);
+        StartGame("Final_de_Fase");
+    }
 }

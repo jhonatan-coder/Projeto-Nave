@@ -65,5 +65,6 @@ public class MenuOptions : MonoBehaviour
     public void DesbloquarMenu()
     {
         menuAberto = !MenuAberto;
+        Time.timeScale = 1;
     }
 }
