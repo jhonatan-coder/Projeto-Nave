@@ -25,7 +25,7 @@ public class GameController : MonoBehaviour
 {
     public PlayerController _playerController;
     private SceneController _controleDeCena;
-    private MusicManager _controleDeMusica;
+    private MusicManager _musicManager;
 
     public gameState currentState;
 
@@ -111,7 +111,7 @@ public class GameController : MonoBehaviour
     void Start()
     {
         _controleDeCena = FindFirstObjectByType<SceneController>();
-        _controleDeMusica = FindFirstObjectByType<MusicManager>();
+        _musicManager = FindFirstObjectByType<MusicManager>();
         _playerController = FindAnyObjectByType<PlayerController>();
         scorePlus = 1;
         shotPlus = 0;
@@ -176,7 +176,7 @@ public class GameController : MonoBehaviour
                     {
                         estadoAtualHelicopeto = estadoHelicoptero.voando;                       
                     }
-                    _controleDeMusica.HelicopteroDecolando();
+                    _musicManager.HelicopteroDecolando();
                     break;
                 //caso estado seja voando
                 case estadoHelicoptero.voando:
@@ -189,7 +189,7 @@ public class GameController : MonoBehaviour
                         currentState = gameState.gameplay;
                     }
                     //AQUI VAI O SOM DO HELICOPTERO VOANDO RAPIDO
-                    _controleDeMusica.HelicopteroVoando();
+                    _musicManager.HelicopteroVoando();
                     break;
             }
 
@@ -251,7 +251,7 @@ public class GameController : MonoBehaviour
             Destroy(_playerController.gameObject);
             _playerController = null;
         }
-        _controleDeMusica.FxExplosaoDeath();
+        _musicManager.FXGeral(_musicManager.FxExplosao);
         extraLifes--;
         if (extraLifes >= 0)
         {

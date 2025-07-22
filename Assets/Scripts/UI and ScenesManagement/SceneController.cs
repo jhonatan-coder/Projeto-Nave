@@ -6,13 +6,8 @@ using UnityEngine.SceneManagement;
 public class SceneController : MonoBehaviour
 {
     private static FadeTransition _fadeTransition;
+    private MenuOptions _menuOptions;
 
-    public GameObject btnMenu;
-    public GameObject btnRestart;
-/*    private Slider audioSourceMusic;
-    private Slider audioSourceFX;
-    private Slider audioSourceFXTiro;
-    private Slider audioSourceFXExplosion;*/
     string cenaAtual;
 
     public string CenaAtual { get => cenaAtual; set => cenaAtual = value; }
@@ -24,7 +19,7 @@ public class SceneController : MonoBehaviour
         //por estar utilizando o LoadSceneMode, não nescessita especificar qual o nome da cena, será pego automaticamente
 
         _fadeTransition = FindFirstObjectByType<FadeTransition>();
-
+        _menuOptions = FindFirstObjectByType<MenuOptions>();
         //Toda vez que uma cena for carregada chame.
         SceneManager.sceneLoaded += OnCenaCarregada;
         CenaAtual = SceneManager.GetActiveScene().name;
@@ -36,11 +31,7 @@ public class SceneController : MonoBehaviour
         if (CenaAtual == "Menu-Inicial")
         {
             _musicManager.PararTodosOsFx();
-            if (btnMenu != null && btnRestart != null)
-            {
-                btnMenu.SetActive(false);
-                btnRestart.SetActive(false);
-            }
+            _menuOptions.DesativarBotoes();
             StartCoroutine(DesligaAnimacaoFade());
         }
     }
@@ -63,44 +54,28 @@ public class SceneController : MonoBehaviour
             _musicManager.TrocarMusicaCena(cena.name);
         }
 
-        MenuOptions menu = FindFirstObjectByType<MenuOptions>();
-        if (menu != null)
+        //MenuOptions menu = FindFirstObjectByType<MenuOptions>();
+        if (_menuOptions != null)
         {
-            if (cena.name == "Final_de_Fase")
+            if (cena.name == "CenaCreditosFinais")
             {
-                menu.BloquearMenu();
+                _menuOptions.BloquearMenu();
             }
             else
             {
-                menu.LiberarMenu();
+                _menuOptions.LiberarMenu();
             }
         }
 
         if (cena.name == "Menu-Inicial")
         {
-            if (btnMenu != null )
-            {
-                btnMenu.SetActive(false);
-                
-            }
-            if (btnRestart != null)
-            {
-                btnRestart.SetActive(false);
-            }
+            _menuOptions.DesativarBotoes();
             _musicManager.PararTodosOsFx();
         }
         else
         {
-            if (btnMenu != null)
-            {
-                btnMenu.SetActive(true);
-
-            }
-            if (btnRestart != null)
-            {
-                btnRestart.SetActive(true);
-            }
-            menu.LiberarMenu();
+            _menuOptions.AtivarBotoes();
+            _menuOptions.LiberarMenu();
         }
         if (cena.name == "Fase")
         {
@@ -163,6 +138,6 @@ public class SceneController : MonoBehaviour
     IEnumerator ComecaFaseFinal()
     {
         yield return new WaitForSeconds(5);
-        StartGame("Final_de_Fase");
+        StartGame("CenaCreditosFinais");
     }
 }

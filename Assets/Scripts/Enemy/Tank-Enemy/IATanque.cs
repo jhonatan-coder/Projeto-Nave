@@ -6,7 +6,7 @@ using UnityEngine;
 public class IATanque : MonoBehaviour
 {
     private GameController _gameController;
-    private MusicManager _controllMusic;
+    private MusicManager _musicManager;
     public GameObject prefabTank;
     public LootEnemy lootEnemy;
 
@@ -27,7 +27,7 @@ public class IATanque : MonoBehaviour
     {
         lootEnemy = GetComponent<LootEnemy>();
         _gameController = FindFirstObjectByType<GameController>();
-        _controllMusic = FindFirstObjectByType<MusicManager>();
+        _musicManager = FindFirstObjectByType<MusicManager>();
     }
 
 
@@ -62,7 +62,7 @@ public class IATanque : MonoBehaviour
                 _gameController.pontosInimigos = 15;
                 _gameController.ScoreGame();
                 lootEnemy.SpawnLoot();
-                _controllMusic.FxExplosaoDeath();
+                _musicManager.FXGeral(_musicManager.FxExplosao);
                 break;
         }
     }

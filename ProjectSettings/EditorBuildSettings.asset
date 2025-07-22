@@ -18,7 +18,7 @@ EditorBuildSettings:
     path: Assets/Scenes/GameOver.unity
     guid: cb034a8a57133964c82b3a33244e2d6c
   - enabled: 1
-    path: Assets/Scenes/Final_de_Fase.unity
+    path: Assets/Scenes/CenaCreditosFinais.unity
     guid: a431e7e0d4bb0404b884a2e0ea8f39f9
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}

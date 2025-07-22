@@ -125,14 +125,14 @@ public class IAEnemy : MonoBehaviour
 
     private void OnBecameVisible()
     {
-        StartCoroutine("TiroComDelay");
+        StartCoroutine(TiroComDelay());
     }
 
     IEnumerator TiroComDelay()
     {
         yield return new WaitForSeconds(delayTiro);
         Atirar();
-        StartCoroutine("TiroComDelay");
+        StartCoroutine(TiroComDelay());
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -144,7 +144,7 @@ public class IAEnemy : MonoBehaviour
                 Destroy(this.gameObject);
                 Destroy(collision.gameObject);
                 _instanceDeathEnemy.SpawnLoot();
-                _musicManager.FxExplosaoDeath();
+                _musicManager.FXGeral(_musicManager.FxExplosao);
                 break;
             case "Player":
                 Destroy(this.gameObject);

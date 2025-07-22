@@ -4,6 +4,8 @@ public class MenuOptions : MonoBehaviour
 {
 
     [SerializeField]private GameObject menuCanvas;
+    public GameObject btnMenu;
+    public GameObject btnRestart;
 
     private bool menuAberto = false;
     private bool podeAbrirMenu = true;
@@ -66,5 +68,22 @@ public class MenuOptions : MonoBehaviour
     {
         menuAberto = !MenuAberto;
         Time.timeScale = 1;
+    }
+
+    public void DesativarBotoes()
+    {
+        if (btnMenu != null && btnRestart != null)
+        {
+            btnMenu.SetActive(false);
+            btnRestart.SetActive(false);
+        }
+    }
+    public void AtivarBotoes()
+    {
+        if (btnMenu != null && btnRestart != null)
+        {
+            btnMenu.SetActive(true);
+            btnRestart.SetActive(true);
+        }
     }
 }

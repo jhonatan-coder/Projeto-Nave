@@ -198,13 +198,12 @@ public class BossControll : MonoBehaviour
                     vidaAtual = 0;
                     sliderLife.fillRect.gameObject.SetActive(false);
                     GameObject temp = Instantiate(_gameController.PrefabExplosion, transform.position, transform.localRotation);
-                    _musicManager.FxExplosaoDeath();
+                    _musicManager.FXGeral(_musicManager.FxExplosao);
                     //Dropar itens e muitos pontos
                     _lootBoss.SpawnLootBoss();
                     IsBossAlive = false;
                     if (IsBossAlive == false)
                     {
-                        print("Boss morreu, vai iniciar coroutina");
                         _sceneControll.CenaFinal();
                     }
                     Destroy(this.gameObject);

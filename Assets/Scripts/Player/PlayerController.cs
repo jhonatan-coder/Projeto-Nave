@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D playerRB;
 
     private GameController _gameController;
-    private MusicManager _controllMusic;
+    private MusicManager _musicManager;
     private MenuOptions _menuOptions;
 
     public GameObject playerSombra;
@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour
         playerRB = GetComponent<Rigidbody2D>();
         _gameController = FindFirstObjectByType<GameController>();
         playerSr = GetComponent<SpriteRenderer>();
-        _controllMusic = FindFirstObjectByType<MusicManager>();
+        _musicManager = FindFirstObjectByType<MusicManager>();
         _menuOptions = FindFirstObjectByType<MenuOptions>();
         _gameController._playerController = this;
         _gameController.isAlivePlayer = true;
@@ -52,7 +52,7 @@ public class PlayerController : MonoBehaviour
             if (Input.GetButtonDown("Fire1") && !_menuOptions.MenuAberto)
             {
                 Shot();
-                _controllMusic.FxTiroHelicoptero();
+                _musicManager.FXGeral(_musicManager.FxTiro);
             }
         }
     }
@@ -119,7 +119,7 @@ public class PlayerController : MonoBehaviour
                 break;
             case "Life":
                 _gameController.LifePlus();
-                _controllMusic.FXSomColetaveis(_controllMusic.vida);
+                _musicManager.FXGeral(_musicManager.vida);
                 if (_gameController.extraLifes < 3)
                 {
                     Destroy(collision.gameObject);
@@ -127,12 +127,12 @@ public class PlayerController : MonoBehaviour
                 break;
             case "Coin":
                 _gameController.ScorePlus();
-                _controllMusic.FXSomColetaveis(_controllMusic.moeda);
+                _musicManager.FXGeral(_musicManager.moeda);
                 Destroy(collision.gameObject);
                 break;
             case "ShotPlus":
                 _gameController.ShotPlus();
-                _controllMusic.FXSomColetaveis(_controllMusic.bomba);
+                _musicManager.FXGeral(_musicManager.bomba);
                 hit += _gameController.shotPlus;
 
                 Destroy(collision.gameObject);

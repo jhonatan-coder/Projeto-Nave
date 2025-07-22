@@ -1,7 +1,6 @@
 using UnityEngine;
 using TMPro;
 using System.Collections;
-using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 
 public class GameOver : MonoBehaviour
 {

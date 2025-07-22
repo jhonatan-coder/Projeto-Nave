@@ -1,24 +1,21 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MusicManager : MonoBehaviour
 {
     [SerializeField]private AudioSource  audioSourceMusic;
     [SerializeField]private AudioSource  audioSourceFX;
-    [SerializeField]private AudioSource  audioSourceFXColetaveis;
-    [SerializeField]private AudioSource  audioSourceFXTiro;
-    [SerializeField]private AudioSource  audioSourceFXExplosion;
-
+    [Header("Musicas do jogo")]
     public AudioClip[]  musicas;
     public AudioClip musicaIntro;
     public AudioClip musicaGameOver;
+    [Header("Sons de FX em Geral")]
     public AudioClip helicopteroDecolando;
     public AudioClip helicopteroVoando;
     public AudioClip FxTiro;
     public AudioClip FxExplosao;
-    //musicas para os itens
+    
     public AudioClip moeda;
     public AudioClip vida;
     public AudioClip bomba;
@@ -27,51 +24,29 @@ public class MusicManager : MonoBehaviour
 
     public Slider sliderVolumeMusica;
     public Slider sliderVolumeFX;
-    public Slider sliderVolumeFXColetaveis;
-    public Slider sliderVolumeFxTiro;
-    public Slider sliderVolumeFxExplosion;
 
     private Coroutine helioCoroutine;
     private AudioClip ultimoClipTocado;
 
     public AudioSource AudioSourceMusic { get => audioSourceMusic; set => audioSourceMusic = value; }
     public AudioSource AudioSourceFX { get => audioSourceFX; set => audioSourceFX = value; }
-    public AudioSource AudioSourceFXTiro { get => audioSourceFXTiro; set => audioSourceFXTiro = value; }
-    public AudioSource AudioSourceFXExplosion { get => audioSourceFXExplosion; set => audioSourceFXExplosion = value; }
-    public AudioSource AudioSourceFXColetaveis { get => audioSourceFXColetaveis; set => audioSourceFXColetaveis = value; }
-
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Start()
     {
-        audioSourceFX.priority = 20;
-        AudioSourceFXTiro.priority = 10;
-
         AudioSourceMusic.volume = 1f;
         AudioSourceFX.volume = 1f;
-        AudioSourceFXTiro.volume = 1f;
-        AudioSourceFXExplosion.volume = 1f;
-
 
         sliderVolumeMusica.value = PlayerPrefs.GetFloat("volMusic", AudioSourceMusic.volume);
         sliderVolumeFX.value = PlayerPrefs.GetFloat("volFX", AudioSourceFX.volume);
-        sliderVolumeFXColetaveis.value = PlayerPrefs.GetFloat("volFX", audioSourceFX.volume);
-        sliderVolumeFxTiro.value = PlayerPrefs.GetFloat("volTiroFX", AudioSourceFXTiro.volume);
-        sliderVolumeFxExplosion.value = PlayerPrefs.GetFloat("volFXExplosion", AudioSourceFXExplosion.volume);
 
         //Adicionar listener para salvar sempre que o valor mudar
         sliderVolumeMusica.onValueChanged.AddListener(SalvarVolMusic);
 
         sliderVolumeFX.onValueChanged.AddListener(SalvarVolFX);
-        sliderVolumeFXColetaveis.onValueChanged.AddListener(SalvarVolFX);
-
-        sliderVolumeFxTiro.onValueChanged.AddListener(SalvarVolTiroFx);
-        sliderVolumeFxExplosion.onValueChanged.AddListener(SalvarVolFxExplosion);
         
         ControleDeVolumeFx();
         ControleDeVolumeMusic();
-        ControleDeVolumeFXTiro();
-        ControleDeVolumeFXExplosion();
 
     }
 
@@ -87,19 +62,6 @@ public class MusicManager : MonoBehaviour
         PlayerPrefs.Save();
     }
 
-    void SalvarVolTiroFx(float value)
-    {
-        PlayerPrefs.SetFloat("volTiroFX", value);
-        PlayerPrefs.Save();
-    }
-
-    void SalvarVolFxExplosion(float value)
-    {
-        PlayerPrefs.SetFloat("volFXExplosion", value);
-        PlayerPrefs.Save();
-    }
-
-
     //Ira tocar a _musicManager dependendo de qual seja a cena
     public void TrocarMusicaCena(string nomeCena)
     {
@@ -110,13 +72,13 @@ public class MusicManager : MonoBehaviour
         switch (nomeCena)
         {
             case "Menu-Inicial":
-                musicaAtual = StartCoroutine(MusicaLoop(musicaIntro));
+                TocarMusica(musicaIntro);
                 break;
             case "Fase":
                 musicaAtual = StartCoroutine(PlaylistMusicFase());
                 break;
             case "GameOver":
-                musicaAtual = StartCoroutine(MusicaLoop(musicaGameOver));
+                TocarMusica(musicaGameOver);
                 AudioSourceMusic.volume = 0.3f;
                 PararTodosOsFx();
                 break;
@@ -148,27 +110,31 @@ public class MusicManager : MonoBehaviour
     }
     
     //Vai iniciar as musicas do menu inicial e do GameOver
-    IEnumerator MusicaLoop(AudioClip clip)
+    public void FXGeral(AudioClip clip)
     {
-        while (true) 
+        AudioSourceFX.PlayOneShot(clip);
+    }
+    public void TocarMusica(AudioClip clip, bool loop = false)
+    {
+        while (true)
         {
             AudioSourceMusic.clip = clip;
+            AudioSourceMusic.loop = loop;
             AudioSourceMusic.Play();
-
-            yield return new WaitForSeconds(clip.length);
         }
     }
-    IEnumerator HelicopteroFXLoop(AudioClip clip)
+    IEnumerator HelicopteroFXLoop(AudioClip clip, bool loop = true)
     {
         while (true)
         {
             AudioSourceFX.clip = clip;
             AudioSourceFX.Play();
-            AudioSourceFX.loop = true;
+            AudioSourceFX.loop = loop;
 
             yield return new WaitForSeconds(clip.length);
         }
     }
+
     public void HelicopteroDecolando()
     {
         if (ultimoClipTocado == helicopteroDecolando)
@@ -201,59 +167,21 @@ public class MusicManager : MonoBehaviour
 
         helioCoroutine = StartCoroutine(HelicopteroFXLoop(helicopteroVoando));
     }
-    //Caso acrescentar novos fx, utilizar essa função para ativa-los
-    public void FXSomColetaveis(AudioClip clip)
-    {
-        AudioSourceFX.PlayOneShot(clip);
-    }
-
-    private void FXTiroHelicopteroPrincipal(AudioClip clip)
-    {
-        AudioSourceFXTiro.clip = clip;
-        AudioSourceFXTiro.Play();
-    }
-
-
-    public void FxTiroHelicoptero()
-    {
-        FXTiroHelicopteroPrincipal(FxTiro);
-        
-    }
-    public void FxExplosaoDeath()
-    {
-        FXSomExplosion(FxExplosao);
-
-    }
-    private void FXSomExplosion(AudioClip clip)
-    {
-        AudioSourceFXExplosion.clip = clip;
-        AudioSourceFXExplosion.Play();
-    }
-
+    //Controla sons FX Geral
     public void ControleDeVolumeMusic()
     {
         AudioSourceMusic.volume = sliderVolumeMusica.value;
-    }
-    public void ControleDeVolumeFXExplosion()
-    {
-        AudioSourceFXExplosion.volume = sliderVolumeFxExplosion.value;
-    }
-    public void ControleDeVolumeFXTiro()
-    {
-        AudioSourceFXTiro.volume = sliderVolumeFxTiro.value;
     }
 
     public void ControleDeVolumeFx()
     {
         AudioSourceFX.volume = sliderVolumeFX.value;
-        AudioSourceFXColetaveis.volume = sliderVolumeFX.value;
     }
 
     public void PararTodosOsFx()
     {
         AudioSourceFX.Stop();
-        AudioSourceFXExplosion.Stop();
-        AudioSourceFXTiro.Stop();
+
         if (ultimoClipTocado == true)
         {
             StopCoroutine(helioCoroutine);
@@ -263,8 +191,6 @@ public class MusicManager : MonoBehaviour
     public void LigarTodosOsFX()
     {
         AudioSourceFX.Play();
-        AudioSourceFXExplosion.Play();
-        AudioSourceFXTiro.Play();
 
         StartCoroutine("helioCoroutine");
 

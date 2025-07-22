@@ -25,8 +25,8 @@ public class EnemyControll : MonoBehaviour
         _instancePlayer = FindFirstObjectByType<PlayerController>();
         _gameController = FindFirstObjectByType<GameController>();
         _instanceDeathEnemy = GetComponent<LootEnemy>();
-        StartCoroutine("TiroLentoInimigo");
-        StartCoroutine("TiroRapidoInimigo");
+        StartCoroutine(TiroLentoInimigo());
+        StartCoroutine(TiroRapidoInimigo());
     }
 
 
@@ -36,7 +36,7 @@ public class EnemyControll : MonoBehaviour
         if (_instancePlayer == null) yield break;
         TiroLento();
         yield return new WaitForSeconds(Random.Range(5f, 15f));
-        StartCoroutine("TiroLentoInimigo");
+        StartCoroutine(TiroLentoInimigo());
        
     }
 
@@ -45,7 +45,7 @@ public class EnemyControll : MonoBehaviour
         if (_instancePlayer == null) yield break;
         yield return new WaitForSeconds(Random.Range(timeShot[0], timeShot[1]));
         TiroRapido();
-        StartCoroutine("TiroRapidoInimigo");
+        StartCoroutine(TiroRapidoInimigo());
     }
 
     public void TiroLento()
