@@ -54,30 +54,31 @@ public class SceneController : MonoBehaviour
             _musicManager.TrocarMusicaCena(cena.name);
         }
 
-        //MenuOptions menu = FindFirstObjectByType<MenuOptions>();
-        if (_menuOptions != null)
+        MenuOptions menu = FindFirstObjectByType<MenuOptions>();
+        if (menu != null)
         {
             if (cena.name == "CenaCreditosFinais")
             {
-                _menuOptions.BloquearMenu();
+                menu.BloquearMenu();
             }
             else
             {
-                _menuOptions.LiberarMenu();
+                menu.LiberarMenu();
             }
         }
 
         if (cena.name == "Menu-Inicial")
         {
+            
             _menuOptions.DesativarBotoes();
             _musicManager.PararTodosOsFx();
         }
         else
         {
-            _menuOptions.AtivarBotoes();
-            _menuOptions.LiberarMenu();
+            
+            menu.LiberarMenu();
         }
-        if (cena.name == "Fase")
+        if (cena.name == "Fase01")
         {
             StartCoroutine(DesligaSons(_musicManager));
         }

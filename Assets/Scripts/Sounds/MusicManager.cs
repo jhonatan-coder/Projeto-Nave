@@ -34,6 +34,7 @@ public class MusicManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Start()
     {
+        Time.timeScale = 1;
         AudioSourceMusic.volume = 1f;
         AudioSourceFX.volume = 1f;
 
@@ -74,7 +75,7 @@ public class MusicManager : MonoBehaviour
             case "Menu-Inicial":
                 TocarMusica(musicaIntro);
                 break;
-            case "Fase":
+            case "Fase01":
                 musicaAtual = StartCoroutine(PlaylistMusicFase());
                 break;
             case "GameOver":
@@ -116,12 +117,11 @@ public class MusicManager : MonoBehaviour
     }
     public void TocarMusica(AudioClip clip, bool loop = false)
     {
-        while (true)
-        {
-            AudioSourceMusic.clip = clip;
-            AudioSourceMusic.loop = loop;
-            AudioSourceMusic.Play();
-        }
+       
+        AudioSourceMusic.clip = clip;
+        AudioSourceMusic.loop = loop;
+        AudioSourceMusic.Play();
+
     }
     IEnumerator HelicopteroFXLoop(AudioClip clip, bool loop = true)
     {

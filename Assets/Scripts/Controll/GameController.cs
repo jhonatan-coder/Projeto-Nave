@@ -113,17 +113,37 @@ public class GameController : MonoBehaviour
         _controleDeCena = FindFirstObjectByType<SceneController>();
         _musicManager = FindFirstObjectByType<MusicManager>();
         _playerController = FindAnyObjectByType<PlayerController>();
+       
         scorePlus = 1;
         shotPlus = 0;
         lifePlus = 0;
 
-        txtPontuacao.text = "0";
-        txtVidasExtras.text = extraLifes.ToString();
-        txtMoedasExtras.text = "1";
-        txtshotsPlus.text = "0";
+        if (txtPontuacao != null)
+        {
+            txtPontuacao.text = "0";
+        }
+        if (txtVidasExtras != null)
+        {
+            txtVidasExtras.text = extraLifes.ToString();
+        }
+        if (txtMoedasExtras != null)
+        {
+            txtMoedasExtras.text = "1";
+        }
+        if (txtshotsPlus != null)
+        {
+            txtshotsPlus.text = "0";
+        }
+        
+        
+        
 
         currentState = gameState.intro;
-        StartCoroutine(IntroFase());
+        if (_playerController != null)
+        {
+            StartCoroutine(IntroFase());
+
+        }
         StartCoroutine(AtivarNavesInimigas());
 
         StartCoroutine(SpawnHumansEnemies());
@@ -311,11 +331,11 @@ public class GameController : MonoBehaviour
     //controla os efetios da cinematica no inicio
     IEnumerator IntroFase()
     {
-        if (_playerController == null)
+        /*if (_playerController == null)
         {
             Debug.LogError("PlayerController está NULL durante IntroFase. Verifique se o jogador foi instanciado antes.");
             yield break;
-        }
+        }*/
         _playerController.fumacaSr.color = corInicialFumaca;
         _playerController.transform.localScale = new Vector3(tamanhoInicialNave, tamanhoInicialNave, tamanhoInicialNave);
         _playerController.transform.position = posicaoInicialNave.position;
