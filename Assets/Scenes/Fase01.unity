@@ -11429,22 +11429,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4937763457393472605, guid: f07489d8b20ea0241b98c920883acb27, type: 3}
-      propertyPath: delayTiro
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4937763457393472605, guid: f07489d8b20ea0241b98c920883acb27, type: 3}
-      propertyPath: tagBullet
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4937763457393472605, guid: f07489d8b20ea0241b98c920883acb27, type: 3}
-      propertyPath: grausCurva
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4937763457393472605, guid: f07489d8b20ea0241b98c920883acb27, type: 3}
-      propertyPath: direcaoMovimento
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6199287980639363065, guid: f07489d8b20ea0241b98c920883acb27, type: 3}
       propertyPath: m_Name
       value: NaveHumana-Enemy (5)
