@@ -29,7 +29,8 @@ public class BossControll : MonoBehaviour
 
     private bool podeAtacar = true; 
     //tipo de munição
-    public int idBullet;
+    public int idBulletArmaBasica;
+    public int idBulletArmaAvancada;
 
     public int velocidadeDoTiroBasico;
     public int velocidadeDoTiroAvancado;
@@ -85,7 +86,7 @@ public class BossControll : MonoBehaviour
         if (Vector3.Distance(transform.position, destino.position) < 0.01f && !chegouNoDestino)
         {
             chegouNoDestino = true;
-            Invoke(nameof(ProximoPonto), 0.1f);
+            Invoke(nameof(ProximoPonto), 0.05f);
         }
     }
     void ProximoPonto()
@@ -124,7 +125,7 @@ public class BossControll : MonoBehaviour
         {
             Vector3 directionPlayer = _playerController.transform.position - transform.position;
             armaBasica.right = directionPlayer;
-            GameObject temp = Instantiate(_gameController.prefabBullets[idBullet], armaBasica.position, armaBasica.rotation);
+            GameObject temp = Instantiate(_gameController.prefabBullets[idBulletArmaBasica], armaBasica.position, armaBasica.rotation);
             temp.transform.tag = _gameController.ApplyTag(tagbullet);
             Vector2 direction = (_playerController.transform.position - armaBasica.position).normalized;
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
@@ -143,7 +144,7 @@ public class BossControll : MonoBehaviour
                         armasAvancadas[i].right = directionPlayer;
                         
                         GameObject temp = Instantiate(
-                            _gameController.prefabBullets[idBullet + 1], 
+                            _gameController.prefabBullets[idBulletArmaAvancada], 
                             armasAvancadas[i].position, 
                             armasAvancadas[i].rotation
                             );

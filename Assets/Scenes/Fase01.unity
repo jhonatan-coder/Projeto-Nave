@@ -5323,6 +5323,7 @@ MonoBehaviour:
   - {fileID: 3462394629389841992, guid: b736f59ae2d5d94499c2335ac3cf71d3, type: 3}
   - {fileID: 3462394629389841992, guid: 07c879b7fc16fc24eb1c11f0f700e52e, type: 3}
   - {fileID: 1695305663422126051, guid: 3b040345993978a45b8e4121a7538374, type: 3}
+  - {fileID: 3462394629389841992, guid: bac2f8db61a111249886521503d3880c, type: 3}
   PrefabExplosion: {fileID: 7723107061036418150, guid: 686af75feeff6be428c666509d0bf51b, type: 3}
   isAlivePlayer: 0
   tamanhoInicialNave: 0.5
@@ -16314,25 +16315,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1248716556}
     m_Modifications:
-    - target: {fileID: 2547090850290272808, guid: 1f97c79764cc45d4aadc9b03ed5fce05, type: 3}
-      propertyPath: m_UiScaleMode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2547090850290272808, guid: 1f97c79764cc45d4aadc9b03ed5fce05, type: 3}
-      propertyPath: m_ReferenceResolution.x
-      value: 1280
-      objectReference: {fileID: 0}
-    - target: {fileID: 2547090850290272808, guid: 1f97c79764cc45d4aadc9b03ed5fce05, type: 3}
-      propertyPath: m_ReferenceResolution.y
-      value: 720
-      objectReference: {fileID: 0}
     - target: {fileID: 3417062692394452308, guid: 1f97c79764cc45d4aadc9b03ed5fce05, type: 3}
       propertyPath: m_Name
       value: EnemyBoss Variant
       objectReference: {fileID: 0}
-    - target: {fileID: 3614657107720528087, guid: 1f97c79764cc45d4aadc9b03ed5fce05, type: 3}
-      propertyPath: m_AnchorMax.y
+    - target: {fileID: 6520887227983915617, guid: 1f97c79764cc45d4aadc9b03ed5fce05, type: 3}
+      propertyPath: idBulletArmaBasica
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6520887227983915617, guid: 1f97c79764cc45d4aadc9b03ed5fce05, type: 3}
+      propertyPath: idBulletArmaAvancada
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6542164106846065830, guid: 1f97c79764cc45d4aadc9b03ed5fce05, type: 3}
       propertyPath: m_Camera
@@ -16377,10 +16370,6 @@ PrefabInstance:
     - target: {fileID: 6607063963185186368, guid: 1f97c79764cc45d4aadc9b03ed5fce05, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8914415296846661556, guid: 1f97c79764cc45d4aadc9b03ed5fce05, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
